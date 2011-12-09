@@ -12,8 +12,8 @@ gem 'search_engine_referer'
 In your code use:
 
 ```ruby
-referer = SearchEngineReferef.parse('http://google.com?q=ruby&start=20')
-referef.search_engine # => SearchEngineReferef::GOOGLE
+referer = SearchEngineReferer.parse('http://google.com?q=ruby&start=20')
+referef.search_engine # => SearchEngineReferer::GOOGLE
 referer.page # => 3
 referer.query # => 'ruby'
 ```
