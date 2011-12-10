@@ -6,11 +6,11 @@ module SearchEngineReferer
       GOOGLE
     end
 
-    def page
+    protected
+
+    def page!
       params['start'].to_i / results_per_page + 1
     end
-
-    protected
 
     def user_query_key
       'q'

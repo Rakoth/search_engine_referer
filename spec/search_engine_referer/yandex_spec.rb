@@ -14,13 +14,13 @@ describe SearchEngineReferer::Yandex do
 
   describe '#query' do
     it 'should parse user query correctly from text parameter' do
-      parser.new(URI.escape('http://yandex.ru?text=test user request')).query.
-        should == 'test user request'
+      parser.new(URI.escape('http://yandex.ru?text=test user request')).
+        query.should == 'test user request'
     end
 
     it 'should parse user query with unicode symbols' do
-      parser.new(URI.escape('http://yandex.ru?text=тестовый запрос')).query.
-        should == 'тестовый запрос'
+      parser.new(URI.escape('http://yandex.ru?text=тестовый запрос')).
+        query.should == 'тестовый запрос'
     end
   end
 end

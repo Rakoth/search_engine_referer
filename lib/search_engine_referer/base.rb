@@ -4,41 +4,51 @@ require 'rack/utils'
 module SearchEngineReferer
   class Base
     def self.factory referer_string
-      parser_class = case referer_string
+      url = URI.parse(referer_string)
+      parser_class = case url.host
       when /google/
         Google
       when /yandex/
         Yandex
       else
-        raise UnknownSearchEngineError.new(
-          "No Search Engine parser for referer: #{referer_string}"
-        )
+        return
       end
 
-      parser_class.new(referer_string)
+      parser_class.new(url)
+    rescue URI::InvalidURIError
+      nil
     end
 
-    def initialize referer_string
-      @source = referer_string
+    def initialize url_or_referer
+      @url = url_or_referer if url_or_referer.is_a?(URI)
+      @source = url_or_referer.to_s
     end
 
     attr_reader :source
 
     def query
-      params[user_query_key].to_s.strip
+      query!.strip
     end
 
     def search_engine
       raise NotImplementedError
     end
 
+    def page
+      @page ||= page!
+    end
+
     def to_hash
       {
+        :search_engine => search_engine,
         :source => source,
         :query => query,
-        :page => page,
-        :search_engine => search_engine
+        :page => page
       }
+    end
+
+    def == other
+      source == other.source
     end
 
     protected
@@ -53,6 +63,10 @@ module SearchEngineReferer
 
     def params
       @params ||= Rack::Utils.parse_query(url.query)
+    end
+
+    def query!
+      params[user_query_key] || ''
     end
   end
 end

@@ -13,8 +13,7 @@ describe SearchEngineReferer::Base do
     end
 
     it 'should raise error if referer cannot be parsed' do
-      expect{SearchEngineReferer::Base.factory('http://test.ru')}.
-        to raise_error(SearchEngineReferer::UnknownSearchEngineError)
+      SearchEngineReferer::Base.factory('http://test.ru').should be_nil
     end
   end
 
