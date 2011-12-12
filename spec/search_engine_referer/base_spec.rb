@@ -12,6 +12,11 @@ describe SearchEngineReferer::Base do
         should be_an_instance_of(SearchEngineReferer::Yandex)
     end
 
+    it 'should build correct parser for rambler referer' do
+      SearchEngineReferer::Base.factory('http://nova.rambler.ru').
+        should be_an_instance_of(SearchEngineReferer::Rambler)
+    end
+
     it 'should raise error if referer cannot be parsed' do
       SearchEngineReferer::Base.factory('http://test.ru').should be_nil
     end
@@ -23,7 +28,7 @@ describe SearchEngineReferer::Base do
         :source => 'http://yandex.ru?text=test&p=1',
         :page => 2,
         :query => 'test',
-        :search_engine => SearchEngineReferer::YANDEX
+        :search_engine => :yandex
       }
     end
   end

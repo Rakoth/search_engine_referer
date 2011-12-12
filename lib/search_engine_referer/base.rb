@@ -10,6 +10,8 @@ module SearchEngineReferer
         Google
       when /yandex/
         Yandex
+      when /rambler/
+        Rambler
       else
         return
       end
@@ -31,7 +33,7 @@ module SearchEngineReferer
     end
 
     def search_engine
-      raise NotImplementedError
+      self.class.to_s.split('::').last.downcase.to_sym
     end
 
     def page

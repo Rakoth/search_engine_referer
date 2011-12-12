@@ -1,9 +1,5 @@
 module SearchEngineReferer
   class Yandex < Base
-    def search_engine
-      YANDEX
-    end
-
     protected
 
     def page!

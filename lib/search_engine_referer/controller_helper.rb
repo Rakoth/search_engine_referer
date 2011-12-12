@@ -13,8 +13,7 @@ module SearchEngineReferer
       protected
       
       def search_engine_referer
-        @search_engine_referer ||= SearchEngineReferer.
-          parse(search_engine_referer_source)
+        @search_engine_referer ||= SearchEngineReferer.parse(search_engine_referer_source)
       end
 
       def search_engine_query

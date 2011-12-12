@@ -2,10 +2,6 @@ module SearchEngineReferer
   class Google < Base
     DEFAULT_RESULTS_PER_PAGE = 10
 
-    def search_engine
-      GOOGLE
-    end
-
     protected
 
     def page!

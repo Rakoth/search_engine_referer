@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe SearchEngineReferer::Google do
   let(:parser){SearchEngineReferer::Google}
+  describe '#search_engine' do
+    it 'should be google' do
+      parser.new('http://google.com').search_engine.should == :google
+    end
+  end
+
   describe '#page' do
     it 'should parse page if it specified in query' do
       parser.new('http://google.ru?start=10').page.should == 2

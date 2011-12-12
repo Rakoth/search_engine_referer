@@ -19,14 +19,10 @@ referer.query # => 'ruby'
 ```
 
 ##Controller Helpers
-Its add helpers for controllers and views:
-`search_engine_referer`
-and
-`search_engine_query`
-and also
-`search_engine_referer_source`
-for referer source manipulations.
+Its add helpers for controllers and views: `search_engine_referer`
+and `search_engine_query` and also method `search_engine_referer_source` for
+referer source manipulations.
 
 **`search_engine_referer_source`**
-Looks into params first and user value with key :search_engine_referer if its present.
+Looks into params first and use value with key :search_engine_referer if its present.
 In other case it takes referer from request.
