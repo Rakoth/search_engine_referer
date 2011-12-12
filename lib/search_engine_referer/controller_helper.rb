@@ -11,7 +11,7 @@ module SearchEngineReferer
 
     module InstanceMethods
       protected
-      
+
       def search_engine_referer
         @search_engine_referer ||= SearchEngineReferer.parse(search_engine_referer_source)
       end
@@ -21,7 +21,7 @@ module SearchEngineReferer
       end
 
       def search_engine_referer_source
-        params[:search_engine_referer] or request.referer
+        request.referer
       end
     end
   end
