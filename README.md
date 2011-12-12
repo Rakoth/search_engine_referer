@@ -2,10 +2,10 @@
 Get meta information from search engine`s referer for google.com and yandex.ru
 
 ##Instalation
-Add folowing line to Gemfile and then run `bundle` command.
+Add the folowing line to Gemfile and then run `bundle` command.
 
 ```ruby
-gem 'search_engine_referer'
+gem 'search_engine_referer', :git => 'git://github.com/Rakoth/search_engine_referer.git'
 ```
 
 ##Usage
@@ -19,10 +19,17 @@ referer.query # => 'ruby'
 ```
 
 ##Controller Helpers
-Its add helpers for controllers and views: `search_engine_referer`
-and `search_engine_query` and also method `search_engine_referer_source` for
-referer source manipulations.
+Its add helpers for controllers and views: `search_engine_referer` and `search_engine_query`.
 
 **`search_engine_referer_source`**
-Looks into params first and use value with key :search_engine_referer if its present.
-In other case it takes referer from request.
+Method for referer source manipulations.
+By default it returns `request.referer`. It can be overwritten in controller, for example:
+
+```ruby
+def search_engine_referer_source
+  cookies[:search_engine_referer] or super
+end
+```
+
+##Development
+Fully tested pull requests are welcome.
