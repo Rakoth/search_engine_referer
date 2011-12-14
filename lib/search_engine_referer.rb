@@ -9,4 +9,8 @@ module SearchEngineReferer
   def self.parse referer_string
     Base.factory(referer_string)
   end
+
+  def self.engines
+    [:yandex, :google, :rambler]
+  end
 end

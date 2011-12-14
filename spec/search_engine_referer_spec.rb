@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe SearchEngineReferer do
+  describe '.engines' do
+    it 'should return all supported engines' do
+      SearchEngineReferer.engines.should =~ [:yandex, :google, :rambler]
+    end
+  end
+  
   describe '.parse' do
     it 'should return referer or nil' do
       SearchEngineReferer.parse('http://yandex.ru').
