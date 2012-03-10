@@ -9,20 +9,18 @@ module SearchEngineReferer
       helper_method :search_engine_referer, :search_engine_query
     end
 
-    module InstanceMethods
-      protected
+    protected
 
-      def search_engine_referer
-        @search_engine_referer ||= SearchEngineReferer.parse(search_engine_referer_source)
-      end
+    def search_engine_referer
+      @search_engine_referer ||= SearchEngineReferer.parse(search_engine_referer_source)
+    end
 
-      def search_engine_query
-        search_engine_referer.try(:query) or ''
-      end
+    def search_engine_query
+      search_engine_referer.try(:query) or ''
+    end
 
-      def search_engine_referer_source
-        request.referer
-      end
+    def search_engine_referer_source
+      request.referer
     end
   end
 end
