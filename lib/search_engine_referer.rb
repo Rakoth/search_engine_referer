@@ -3,6 +3,7 @@ require 'search_engine_referer/base'
 require 'search_engine_referer/yandex'
 require 'search_engine_referer/google'
 require 'search_engine_referer/rambler'
+require 'search_engine_referer/bing'
 require 'search_engine_referer/railtie' if defined? Rails
 
 module SearchEngineReferer
@@ -11,6 +12,6 @@ module SearchEngineReferer
   end
 
   def self.engines
-    [:yandex, :google, :rambler]
+    [:yandex, :google, :rambler, :bing]
   end
 end

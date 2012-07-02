@@ -1,5 +1,10 @@
 #SearchEngineReferer
-Get meta information from search engine`s referer for google.com, yandex.ru and nova.rambler.ru
+Get meta information from search engine`s referer for
+
+* google.com
+* yandex.ru
+* nova.rambler.ru
+* bing.com
 
 ##Instalation
 Add the folowing line to Gemfile and then run `bundle` command.

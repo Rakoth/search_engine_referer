@@ -12,6 +12,8 @@ module SearchEngineReferer
         Yandex
       when /rambler/
         Rambler
+      when /bing/
+        Bing
       else
         return
       end
@@ -64,7 +66,7 @@ module SearchEngineReferer
     end
 
     def params
-      @params ||= Rack::Utils.parse_query(url.query)
+      @params ||= Rack::Utils.parse_query(url.query) rescue {}
     end
 
     def query!

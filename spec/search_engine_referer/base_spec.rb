@@ -17,6 +17,11 @@ describe SearchEngineReferer::Base do
         should be_an_instance_of(SearchEngineReferer::Rambler)
     end
 
+    it 'should build correct parser for rambler referer' do
+      SearchEngineReferer::Base.factory('http://bing.com').
+        should be_an_instance_of(SearchEngineReferer::Bing)
+    end
+
     it 'should raise error if referer cannot be parsed' do
       SearchEngineReferer::Base.factory('http://test.ru').should be_nil
     end
