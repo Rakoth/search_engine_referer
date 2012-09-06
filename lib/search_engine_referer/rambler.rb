@@ -1,5 +1,7 @@
 module SearchEngineReferer
   class Rambler < Base
+    HOST_PATTERN = /^(www\.)?(nova\.)?rambler\./
+
     protected
 
     def page!

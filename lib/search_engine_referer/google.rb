@@ -1,6 +1,7 @@
 module SearchEngineReferer
   class Google < Base
     DEFAULT_RESULTS_PER_PAGE = 10
+    HOST_PATTERN = /^(www\.)?google\./
 
     protected
 

@@ -1,6 +1,7 @@
 module SearchEngineReferer
   class Bing < Base
     DEFAULT_RESULTS_PER_PAGE = 10
+    HOST_PATTERN = /bing\./
 
     protected
 

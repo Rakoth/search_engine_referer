@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SearchEngineReferer do
   describe '.engines' do
     it 'should return all supported engines' do
-      SearchEngineReferer.engines.should =~ [:yandex, :google, :rambler, :bing]
+      SearchEngineReferer.engine_names.should =~ [:yandex, :google, :rambler, :bing]
     end
   end
   

@@ -1,5 +1,7 @@
 module SearchEngineReferer
   class Yandex < Base
+    HOST_PATTERN = /^(www\.)?yandex\./
+
     protected
 
     def page!

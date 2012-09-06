@@ -7,11 +7,17 @@ require 'search_engine_referer/bing'
 require 'search_engine_referer/railtie' if defined? Rails
 
 module SearchEngineReferer
-  def self.parse referer_string
-    Base.factory(referer_string)
-  end
+  class << self
+    def parse referer_string
+      Base.factory(referer_string)
+    end
 
-  def self.engines
-    [:yandex, :google, :rambler, :bing]
+    def engines
+      [Yandex, Google, Rambler, Bing]
+    end
+
+    def engine_names
+      engines.map(&:name)
+    end
   end
 end

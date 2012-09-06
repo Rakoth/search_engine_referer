@@ -5,22 +5,17 @@ module SearchEngineReferer
   class Base
     def self.factory referer_string
       url = URI.parse(referer_string)
-      parser_class = case url.host
-      when /google/
-        Google
-      when /yandex/
-        Yandex
-      when /rambler/
-        Rambler
-      when /bing/
-        Bing
-      else
-        return
-      end
-
-      parser_class.new(url)
+      SearchEngineReferer.engines.detect{|engine| engine.host_pattern =~ url.host}.try(:new, url)
     rescue URI::InvalidURIError
       nil
+    end
+
+    def self.host_pattern
+      self::HOST_PATTERN
+    end
+
+    def self.name
+      super.split('::').last.downcase.to_sym
     end
 
     def initialize url_or_referer

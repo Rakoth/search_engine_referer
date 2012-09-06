@@ -22,8 +22,12 @@ describe SearchEngineReferer::Base do
         should be_an_instance_of(SearchEngineReferer::Bing)
     end
 
-    it 'should raise error if referer cannot be parsed' do
+    it 'should return nil if referer cannot be parsed' do
       SearchEngineReferer::Base.factory('http://test.ru').should be_nil
+    end
+
+    it 'should return nil if referer cannot be parsed (goggle in host name)' do
+      SearchEngineReferer::Base.factory('http://avia.newgoogle.ru').should be_nil
     end
   end
 
