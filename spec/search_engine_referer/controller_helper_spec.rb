@@ -14,6 +14,10 @@ class Controller
     helpers.push(*args)
   end
 
+  def env
+    @env ||= {}
+  end
+
   attr_accessor :request
 
   include SearchEngineReferer::ControllerHelper
@@ -30,7 +34,17 @@ describe SearchEngineReferer::ControllerHelper do
     let(:referer){SearchEngineReferer::Yandex.new(referer_source)}
 
     context 'referer given in headers' do
-      let(:request){double(:referer => referer_source)}
+      let(:request){double(referer: referer_source)}
+      its(:search_engine_query){should == 'test'}
+      its(:search_engine_referer){should == referer}
+    end
+
+    context 'with search engine referer middleware' do
+      before do
+        subject.env['search_engine_referer'] = referer
+      end
+
+      let(:request){double(referer: nil)}
       its(:search_engine_query){should == 'test'}
       its(:search_engine_referer){should == referer}
     end

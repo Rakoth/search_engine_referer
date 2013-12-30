@@ -27,11 +27,32 @@ non_search_enfine_referer = SearchEngineReferer.parse('http://example.com?q=ruby
 non_search_enfine_referef # => nil
 ```
 
+##Middleware
+Tiny middleware provided. It adds `search_engine_referer` key to env with found referer. Examples:
+
+* Uses `HTTP_REFERER` from env
+
+    ```ruby
+    use SearchEngineReferer::Middleware
+    ```
+
+* Uses `CUSTOM_ENV_KEY` for referer lookup
+
+    ```ruby
+    use SearchEngineReferer::Middleware, 'CUSTOM_ENV_KEY'
+    ```
+
+* Uses provided proc for referer lookup
+
+    ```ruby
+    use SearchEngineReferer::Middleware do |env|
+      env['action_pack.cookies']['referer']
+    end
+    ```
+
 ##Controller Helpers
 Its add helpers for controllers and views: `search_engine_referer` and `search_engine_query`.
-
-**`search_engine_referer_source`**
-Method for referer source manipulations.
+`search_engine_referer_source` method for referer source manipulations.
 By default it returns `request.referer`. It can be overwritten in controller, for example:
 
 ```ruby
@@ -39,6 +60,8 @@ def search_engine_referer_source
   cookies[:search_engine_referer] || super
 end
 ```
+
+**Note** that helpers will use `env['search_engine_referer']` if it provided by middleware
 
 ##Development
 Fully tested pull requests are welcome.

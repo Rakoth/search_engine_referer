@@ -6,6 +6,7 @@ require 'search_engine_referer/yandex'
 require 'search_engine_referer/mailru'
 require 'search_engine_referer/rambler'
 require 'search_engine_referer/railtie' if defined? Rails
+require 'search_engine_referer/middleware' if defined? Rack
 
 module SearchEngineReferer
   class << self
