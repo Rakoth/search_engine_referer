@@ -2,15 +2,16 @@
 Get meta information from search engine`s referer for
 
 * google.com
-* yandex.ru
-* nova.rambler.ru
 * bing.com
+* yandex.ru
+* go.mail.ru
+* nova.rambler.ru
 
 ##Instalation
 Add the folowing line to Gemfile and then run `bundle` command.
 
 ```ruby
-gem 'search_engine_referer', :git => 'git://github.com/Rakoth/search_engine_referer.git'
+gem 'search_engine_referer'
 ```
 
 ##Usage
@@ -21,6 +22,9 @@ referer = SearchEngineReferer.parse('http://google.com?q=ruby&start=20')
 referef.search_engine # => :google
 referer.page # => 3
 referer.query # => 'ruby'
+
+non_search_enfine_referer = SearchEngineReferer.parse('http://example.com?q=ruby')
+non_search_enfine_referef # => nil
 ```
 
 ##Controller Helpers
@@ -32,7 +36,7 @@ By default it returns `request.referer`. It can be overwritten in controller, fo
 
 ```ruby
 def search_engine_referer_source
-  cookies[:search_engine_referer] or super
+  cookies[:search_engine_referer] || super
 end
 ```
 

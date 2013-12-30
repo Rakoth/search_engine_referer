@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchEngineReferer::Google do
-  let(:parser){SearchEngineReferer::Google}
+  let(:parser){described_class}
   describe '#search_engine' do
     it 'should be google' do
       parser.new('http://google.com').search_engine.should == :google

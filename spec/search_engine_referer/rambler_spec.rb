@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchEngineReferer::Rambler do
-  let(:parser){SearchEngineReferer::Rambler}
+  let(:parser){described_class}
   describe '#search_engine' do
     it 'should be rambler' do
       parser.new('http://nova.rambler.ru').search_engine.should == :rambler

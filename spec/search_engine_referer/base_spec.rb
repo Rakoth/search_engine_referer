@@ -12,6 +12,11 @@ describe SearchEngineReferer::Base do
         should be_an_instance_of(SearchEngineReferer::Yandex)
     end
 
+    it 'should build correct parser for mailru referer' do
+      SearchEngineReferer::Base.factory('http://go.mail.ru').
+        should be_an_instance_of(SearchEngineReferer::Mailru)
+    end
+
     it 'should build correct parser for rambler referer' do
       SearchEngineReferer::Base.factory('http://nova.rambler.ru').
         should be_an_instance_of(SearchEngineReferer::Rambler)

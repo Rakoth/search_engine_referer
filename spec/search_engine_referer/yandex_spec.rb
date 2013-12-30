@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe SearchEngineReferer::Yandex do
-  let(:parser){SearchEngineReferer::Yandex}
+  let(:parser){described_class}
   describe '#search_engine' do
     it 'should be yandex' do
       parser.new('http://yandex.ru').search_engine.should == :yandex
     end
   end
-  
+
   describe '#page' do
     it 'should parse page if it specified in query' do
       parser.new('http://yandex.ru?p=2').page.should == 3
